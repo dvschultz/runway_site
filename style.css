@@ -2,8 +2,23 @@ html, body {
   margin: 0;
   padding: 0;
 }
-canvas {
-  display: block;
+
+#inactive {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	background: red;
+}
+
+#inactive p {
+	margin-left: 10px;
+}
+
+.hidden {
+	display: none;
 }
 
 .loading {

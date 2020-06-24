@@ -7,14 +7,24 @@ const model = new rw.HostedModel({
   token: "Mz1cbBjFfvQwKyzD1yXZeQ==",
 });
 
+if(typeof(model)=='undefined'){
+  console.log('model inactive')
+} else {
+  console.log('model active')
+  document.querySelectorAll('#inactive')[0].classList.add('hidden')
+}
+
 async function checkModel() {
   document.querySelector('body').classList.add('loading')
-  await model.waitUntilAwake();
-  document.querySelector('body').classList.remove('loading')
+  if(typeof(model)!='undefined'){
+    await model.waitUntilAwake();
+    document.querySelector('body').classList.remove('loading')
+  }
 }
 
 function setup() {
   // create canvas
+  pixelDensity(1)
   createCanvas(1024, 1044);
   inp = createInput('');
   inp.input(gotText);
@@ -47,12 +57,10 @@ async function getImageFromRunway() {
     truncation: truncation_value
   };
 
-  const result = await model.query(data)
-  gotImage(result)
-}
-
-function gotError(error) {
-  console.error(error);
+  if(typeof(model)!='undefined'){
+    const result = await model.query(data)
+    gotImage(result)
+  }
 }
 
 function gotImage(result) {
