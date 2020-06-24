@@ -3,8 +3,8 @@ let inp;
 let seed;
 
 const model = new rw.HostedModel({
-  url: "https://bone-bone-fec37179.hosted-models.runwayml.cloud/v1/",
-  token: "Mz1cbBjFfvQwKyzD1yXZeQ==",
+  url: "https://bone-bone-90d2d433.hosted-models.runwayml.cloud/v1/",
+  token: "tCtR4MgDW0d5FZmrmLg2Ww==",
 });
 
 if(typeof(model)=='undefined'){
